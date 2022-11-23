@@ -1,0 +1,44 @@
+<%= form_with(model: tutorial) do |form| %>
+  <% if tutorial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tutorial.errors.count, "error") %> prohibited this tutorial from being saved:</h2>
+
+      <ul>
+        <% tutorial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :category, class: "form-label" %>
+      <%= form.select  :category, ["HTML & CSS", "Javascript", "Ruby", "React JS", "Ruby on Rails"], {include_blank: true}, {class: "form-select"} %>
+    </div>
+
+    <div class="col">
+      <%= form.label :author, class: "form-label" %>
+      <%= form.text_field :author, class: "form-control"%>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :body, class: "form-label" %>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary mt-3 center"%>
+  </div>
+<% end %>
