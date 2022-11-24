@@ -37,7 +37,9 @@ class TutorialsController < ApplicationController
   # PATCH/PUT /tutorials/1 or /tutorials/1.json
   def update
     respond_to do |format|
-      if @tutorial.update(tutorial_params)
+      formatted_tutorial_params = tutorial_params
+      formatted_tutorial_params[:category] = formatted_tutorial_params[:category].downcase.gsub(/\s+/, "")
+      if @tutorial.update(formatted_tutorial_params)
         format.html { redirect_to tutorial_url(@tutorial), notice: "Tutorial was successfully updated." }
         format.json { render :show, status: :ok, location: @tutorial }
       else

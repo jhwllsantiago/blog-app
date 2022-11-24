@@ -30,15 +30,16 @@
 
   <div>
     <%= form.label :description, class: "form-label" %>
-    <%= form.text_area :description, class: "form-control" %>
+    <%= form.text_area :description, class: "form-control", rows: 4 %>
   </div>
 
   <div>
     <%= form.label :body, class: "form-label" %>
-    <%= form.text_area :body, class: "form-control" %>
+    <%= form.text_area :body, class: "form-control", rows: 15 %>
   </div>
 
-  <div>
-    <%= form.submit class: "btn btn-primary mt-3 center"%>
+  <div class="d-grid gap-2 d-md-block mt-3">
+    <%= form.submit class: "btn btn-primary"%>
+    <%= link_to "Cancel", tutorials_path , class: "btn btn-dark"%>
   </div>
 <% end %>

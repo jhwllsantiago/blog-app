@@ -1,5 +1,19 @@
 .tutorial-block-link {
-    text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 1.25em;
+
+  &:hover {
     color: inherit;
-    margin-top: 1.25em;
+  }
+}
+
+.show-page-buttons {
+  display: flex;
+  width: 75%;
+  gap: 20px;
+
+  .btn {
+    width: 100px;
+  }
 }
