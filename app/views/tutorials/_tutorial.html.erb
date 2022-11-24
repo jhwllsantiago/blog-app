@@ -1,18 +1,7 @@
-<div id="<%= dom_id tutorial %>">
-  <p>
-    <strong>Category:</strong>
-    <%= tutorial.category %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= tutorial.author %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= tutorial.title %>
-  </p>
+<div id="<%= dom_id tutorial %>" class="container w-75 mt-5">
+  <p class="badge bg-secondary mb-0">#<%= tutorial.category %></p>
+  <p class="text-capitalize badge text-bg-dark"><%= tutorial.author %></p>
+  <h3 class="text-uppercase text-primary"><%= tutorial.title %></h3>
 
   <p>
     <strong>Description:</strong>
@@ -23,15 +12,7 @@
     <strong>Body:</strong>
     <%= tutorial.body %>
   </p>
-
-  <p>
-    <strong>Upvotes:</strong>
-    <%= tutorial.upvotes %>
-  </p>
-
-  <p>
-    <strong>Downvotes:</strong>
-    <%= tutorial.downvotes %>
-  </p>
-
+  <i class="bi bi-hand-thumbs-up" role="button"> <%= tutorial.upvotes %></i>
+  &emsp;
+  <i class="bi bi-hand-thumbs-down" role="button"> <%= tutorial.downvotes %></i>
 </div>

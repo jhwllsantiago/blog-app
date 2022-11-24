@@ -22,7 +22,7 @@ class TutorialsController < ApplicationController
   # POST /tutorials or /tutorials.json
   def create
     @tutorial = Tutorial.new(tutorial_params)
-
+    @tutorial.category =  @tutorial.category.downcase.gsub(/\s+/, "")
     respond_to do |format|
       if @tutorial.save
         format.html { redirect_to tutorial_url(@tutorial), notice: "Tutorial was successfully created." }
@@ -55,6 +55,10 @@ class TutorialsController < ApplicationController
       format.html { redirect_to tutorials_url, notice: "Tutorial was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def list
+    @tutorials = Tutorial.where(category: params[:category])
   end
 
   private

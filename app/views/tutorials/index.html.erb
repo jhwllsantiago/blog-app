@@ -1,14 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tutorials</h1>
-
-<div id="tutorials">
-  <% @tutorials.each do |tutorial| %>
-    <%= render tutorial %>
-    <p>
-      <%= link_to "Show this tutorial", tutorial %>
-    </p>
-  <% end %>
+<div class="container">
+  <h1 class="text-center">Tutorials by Lorem Ipsum Community</h1>
+  <div id="tutorials">
+    <% @tutorials.each do |tutorial| %>
+      <%= link_to render(tutorial), tutorial, class: "tutorial-block-link" %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New tutorial", new_tutorial_path %>
