@@ -1,12 +1,14 @@
 <div id="<%= dom_id tutorial %>" class="container w-75 mt-5">
-  <p class="badge bg-secondary mb-0">#<%= tutorial.category %></p>
-  <p class="text-capitalize badge text-bg-dark"><%= tutorial.author %></p>
+  <%= link_to "\##{tutorial.category}", category_path(tutorial.category), class: "link-badge badge bg-secondary mb-0"%>
+  <%= link_to tutorial.author, author_path(tutorial.author.downcase.to_sym), class: "link-badge text-capitalize badge text-bg-dark"%>
   <h3 class="text-uppercase text-primary"><%= tutorial.title %></h3>
 
   <p class="lead"><%= tutorial.description %></p>
   <p><%= tutorial.body %></p>
 
+  <span>Is this post informative?</span>
+  &ensp;
   <i class="bi bi-hand-thumbs-up" role="button"> <%= tutorial.upvotes %></i>
-  &emsp;
+  &ensp;
   <i class="bi bi-hand-thumbs-down" role="button"> <%= tutorial.downvotes %></i>
 </div>

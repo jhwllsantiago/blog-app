@@ -62,6 +62,9 @@ class TutorialsController < ApplicationController
   def list
     @tutorials = Tutorial.where(category: params[:category])
   end
+  def list_by_author
+    @tutorials = Tutorial.where('lower(author) LIKE ?', "%#{params[:author]}%")
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
