@@ -3,7 +3,11 @@ class TutorialsController < ApplicationController
 
   # GET /tutorials or /tutorials.json
   def index
-    @tutorials = Tutorial.all
+    if (params[:query])
+      @tutorials = Tutorial.where('lower(author) LIKE ? OR lower(title) LIKE ? OR lower(description) LIKE ? OR lower(body) LIKE ?', "#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @tutorials = Tutorial.all
+    end
   end
 
   # GET /tutorials/1 or /tutorials/1.json
