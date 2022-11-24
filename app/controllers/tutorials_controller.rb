@@ -59,7 +59,7 @@ class TutorialsController < ApplicationController
     end
   end
 
-  def list
+  def list_by_category
     @tutorials = Tutorial.where(category: params[:category])
   end
   def list_by_author
