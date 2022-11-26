@@ -3,11 +3,18 @@
   <p class="text-capitalize badge text-bg-dark mb-1"><%= tutorial.author %></p>
   <h3 class="text-uppercase text-primary"><%= tutorial.title %></h3>
 
-  <p class="lead"><%= tutorial.description %></p>
+  <p class="lead text-justify"><%= tutorial.description %></p>
 
-  <span class="fst-italic fw-semibold">Rating</span>
-  &ensp;
-  <i class="bi bi-hand-thumbs-up" role="button"> <%= tutorial.upvotes %></i>
-  &ensp;
-  <i class="bi bi-hand-thumbs-down" role="button"> <%= tutorial.downvotes %></i>
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="fst-italic fw-semibold">Rating&ensp;</span>
+      <i class="bi bi-hand-thumbs-up" role="button"> <%= tutorial.upvotes %>&ensp;</i>
+      <i class="bi bi-hand-thumbs-down" role="button"> <%= tutorial.downvotes %></i>
+    </div>
+    
+    <div class="fst-italic">
+      <span>Last update </span>
+      <span><%= tutorial.updated_at.strftime('%b %d, %Y') %></span>
+    </div>
+  </div>
 </div>

@@ -3,12 +3,20 @@
   <%= link_to tutorial.author, author_path(tutorial.author.downcase.to_sym), class: "link-badge text-capitalize badge text-bg-dark mb-1"%>
   <h3 class="text-uppercase text-primary"><%= tutorial.title %></h3>
 
-  <p class="lead"><%= tutorial.description %></p>
-  <p><%= tutorial.body %></p>
+  <p class="lead text-justify"><%= tutorial.description %></p>
+  <p class="text-justify"><%= tutorial.body %></p>
 
-  <span>Is this post informative?</span>
-  &ensp;
-  <i class="bi bi-hand-thumbs-up" role="button"> <%= tutorial.upvotes %></i>
-  &ensp;
-  <i class="bi bi-hand-thumbs-down" role="button"> <%= tutorial.downvotes %></i>
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="not-selectable fst-italic">Is this post informative?&ensp;</span>
+      <%= link_to render("upvotes", upvotes: tutorial.upvotes), tutorial_upvote_path(tutorial), data: {"turbo-method": :put, "turbo_frame": "upvotes_frame"}, class: 'not-selectable bi bi-hand-thumbs-up' %>
+      <span class="not-selectable">&ensp;</span>
+      <%= link_to render("downvotes", downvotes: tutorial.downvotes), tutorial_downvote_path(tutorial), data: {"turbo-method": :put, "turbo_frame": "downvotes_frame"}, class: 'not-selectable bi bi-hand-thumbs-down' %>
+    </div>
+    
+    <div class="fst-italic">
+      <span>Last update </span>
+      <span><%= tutorial.updated_at.strftime('%b %d, %Y') %></span>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
-  before_action :set_tutorial, only: %i[ show edit update destroy ]
+  before_action :set_tutorial, only: %i[ show edit update destroy upvote downvote]
 
   # GET /tutorials or /tutorials.json
   def index
@@ -68,6 +68,17 @@ class TutorialsController < ApplicationController
   end
   def list_by_author
     @tutorials = Tutorial.where('lower(author) LIKE ?', "%#{params[:author]}%")
+  end
+
+  def upvote
+    upvotes = @tutorial.upvotes + 1
+    @tutorial.update(upvotes: upvotes)
+    render partial: "upvotes", locals: {upvotes: upvotes}, status: :ok
+  end
+  def downvote
+    downvotes = @tutorial.downvotes + 1
+    @tutorial.update(downvotes: downvotes)
+    render partial: "downvotes", locals: {downvotes: downvotes}, status: :ok
   end
 
   private

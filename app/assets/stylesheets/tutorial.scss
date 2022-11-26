@@ -21,3 +21,15 @@
 .link-badge {
   text-decoration: none;
 }
+
+.not-selectable {
+  user-select: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-justify {
+  text-align: justify;
+  text-justify: inter-word;
+  white-space: pre-wrap;
+}
